@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "901986916130",
+    "project_id": "rudnik-clone-instagram",
+    "storage_bucket": "rudnik-clone-instagram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901986916130:android:b8bb0b8f275b0eb8e8f77b",
+        "android_client_info": {
+          "package_name": "com.example.instagram_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901986916130-dtmvtel8vr13ds20r09d1iidpgjtoptj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeRUqxIQOKLTYMaZO9X8IuarHxailKNqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901986916130-dtmvtel8vr13ds20r09d1iidpgjtoptj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
