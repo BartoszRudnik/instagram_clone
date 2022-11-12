@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/state/auth/backend/authenticator.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instagram_clone/state/auth/providers/is_logged_in_provider.dart';
+import 'package:instagram_clone/views/login_view.dart';
+import 'package:instagram_clone/views/main_view.dart';
 
 import 'firebase_options.dart';
 
@@ -11,7 +14,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,42 +29,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       darkTheme: ThemeData.dark(),
-      home: const HomePage(),
-    );
-  }
-}
+      home: Consumer(
+        builder: (context, ref, child) {
+          final isLoggedIn = ref.watch(
+            isLoggedInProvider,
+          );
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextButton(
-            onPressed: () async {
-              final result = await Authenticator().loginWithGoogle();
-
-              print(result);
-            },
-            child: const Text(
-              'Google',
-            ),
-          ),
-          TextButton(
-            onPressed: () async {
-              final result = await Authenticator().facebookLogin();
-
-              print(result);
-            },
-            child: const Text(
-              'Facebook',
-            ),
-          ),
-        ],
+          if (isLoggedIn) {
+            return const MainView();
+          } else {
+            return const LoginView();
+          }
+        },
       ),
     );
   }
