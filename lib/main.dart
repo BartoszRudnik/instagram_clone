@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone/state/auth/providers/is_logged_in_provider.dart';
+import 'package:instagram_clone/state/providers/is_loading_provider.dart';
+import 'package:instagram_clone/views/components/loading/loading_screen.dart';
 import 'package:instagram_clone/views/login_view.dart';
 import 'package:instagram_clone/views/main_view.dart';
 
@@ -31,6 +33,19 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       home: Consumer(
         builder: (context, ref, child) {
+          ref.listen<bool>(
+            isLoadingProvider,
+            (_, isLoading) {
+              if (isLoading) {
+                LoadingScreen.instance().show(
+                  context: context,
+                );
+              } else {
+                LoadingScreen.instance().hide();
+              }
+            },
+          );
+
           final isLoggedIn = ref.watch(
             isLoggedInProvider,
           );
