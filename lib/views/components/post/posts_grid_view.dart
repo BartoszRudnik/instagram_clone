@@ -18,6 +18,7 @@ class PostsGridView extends StatelessWidget {
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
       ),
+      itemCount: posts.length,
       itemBuilder: (context, index) {
         final post = posts.elementAt(index);
 

@@ -28,6 +28,7 @@ class PostPayload extends MapView<String, dynamic> {
             PostKey.createdAt: FieldValue.serverTimestamp(),
             PostKey.fileUrl: fileUrl,
             PostKey.fileType: fileType.name,
+            PostKey.fileName: fileName,
             PostKey.aspectRatio: aspectRatio,
             PostKey.thumbnailStorageId: thumbnailStorageId,
             PostKey.originalFileStorageId: originalFileStorageId,
