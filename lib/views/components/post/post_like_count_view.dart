@@ -25,7 +25,7 @@ class PostLikeCountView extends ConsumerWidget {
     return likesCount.when(
       data: (data) {
         final personOrPeople = data == 1 ? Strings.person : Strings.people;
-        final likesText = '$likesCount $personOrPeople liked this';
+        final likesText = '$data $personOrPeople liked this';
 
         return Text(
           likesText,
