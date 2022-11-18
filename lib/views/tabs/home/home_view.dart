@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instagram_clone/state/posts/provider/user_posts_provider.dart';
-import 'package:instagram_clone/views/components/animations/empty_contents_with_text_animation_view.dart';
+import 'package:instagram_clone/state/posts/provider/all_posts_provider.dart';
 import 'package:instagram_clone/views/components/animations/error_animation_view.dart';
 import 'package:instagram_clone/views/components/animations/loading_animation_view.dart';
 import 'package:instagram_clone/views/components/post/posts_grid_view.dart';
 import 'package:instagram_clone/views/constants/strings.dart';
 
-class UserPostsView extends ConsumerWidget {
-  const UserPostsView({super.key});
+import '../../components/animations/empty_contents_with_text_animation_view.dart';
+
+class HomeView extends ConsumerWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final posts = ref.watch(
-      userPostsProvider,
+      allPostsProvider,
     );
 
     return RefreshIndicator(
       onRefresh: () async {
         ref.refresh(
-          userPostsProvider,
+          allPostsProvider,
         );
 
         return Future.delayed(
